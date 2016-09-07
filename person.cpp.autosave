@@ -1,0 +1,16 @@
+#include "person.h"
+
+Person::Person(string name) {
+    
+}
+
+string Person::toString() {
+    
+}
+
+Person::setPosition(Employer newC, Position newP) {
+    
+}
+
+Person::~Person() {}
+

@@ -1,0 +1,17 @@
+#include "position.h"
+
+position::position(string name1, string name2) {
+    m_Name = " ";
+    m_Description = " ";
+}
+
+position::position(string name, string description) {
+    m_Name = name;
+    m_Description = description;
+}
+
+string position::toString() {
+    
+}
+
+position::~position(){}
