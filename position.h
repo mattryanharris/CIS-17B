@@ -4,17 +4,15 @@
 #include <string>
 
 
-class Position
-{
+class Position {
 public:
     Position(std::string name, std::string description);
     ~Position();
     std::string toString();
 
 private:
-    std::string m_name;
-    std::string m_description;
-
+    std::string m_Name;
+    std::string m_Description;
 };
 
 #endif // POSITION_H

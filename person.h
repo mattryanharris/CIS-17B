@@ -5,17 +5,15 @@
 class Employer;
 class Position;
 
-class Person
-{
+class Person {
 public:
-
     Person(std::string name);
     ~Person();
 private:
-    std::string m_name;
-    bool m_employed;
-    Position m_position;
-    Employer m_employer;
+    std::string m_Name;
+    bool m_Employed;
+    Position * m_Position;
+    Employer * m_Employer;
 };
 
 

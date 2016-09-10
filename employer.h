@@ -3,13 +3,10 @@
 
 #include <string>
 
-
-
 class Person;
 class Position;
 
-class Employer
-{
+class Employer {
 public:
 
     Employer(std::string name, std::string market);
@@ -19,8 +16,8 @@ public:
     std::string toString();
 
 private:
-    std::string m_name;
-    std::string m_market;
+    std::string m_Name;
+    std::string m_Market;
 };
 
 #endif // EMPLOYER_H
