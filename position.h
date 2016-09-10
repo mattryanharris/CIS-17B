@@ -1,18 +1,20 @@
 #ifndef POSITION_H
 #define POSITION_H
 
-#include "employer.h"
+#include <string>
 
-class position
+
+class Position
 {
 public:
-    position(string name, string description);
-    string toString();
-    ~position();
+    Position(std::string name, std::string description);
+    ~Position();
+    std::string toString();
 
 private:
-     string m_Name;
-     string m_Description;
+    std::string m_name;
+    std::string m_description;
+
 };
 
 #endif // POSITION_H

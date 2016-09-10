@@ -1,21 +1,22 @@
 #ifndef PERSON_H
 #define PERSON_H
+#import <string>
 
-#include "position.h"
+class Employer;
+class Position;
 
 class Person
 {
 public:
-    Person(string name);
-    string toString();
-    setPosition(Employer newC, Position newP);
-    ~Person();
 
+    Person(std::string name);
+    ~Person();
 private:
-    string m_Name;
-    bool m_Employed;
+    std::string m_name;
+    bool m_employed;
     Position m_position;
     Employer m_employer;
 };
+
 
 #endif // PERSON_H

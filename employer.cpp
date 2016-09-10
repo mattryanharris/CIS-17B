@@ -1,15 +1,20 @@
 #include "employer.h"
 
-employer::employer(string name, string market) {
+Employer::Employer() {
 
 }
 
-employer::~employer(){}
-
-
-bool employer::hire(Person & newHire, Position pos) {
+bool Employer::hire(Person & newHire, Position pos) {
 
 }
 
-string toString() {}
+Employer::Employer(string name, string market) {
+
+}
+
+string Employer::toString() {
+
+}
+
+Employer::~Employer() {}
 
