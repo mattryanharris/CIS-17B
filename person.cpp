@@ -2,7 +2,7 @@
 
 Person::Person() {
     string m_Name = " ";
-    bool m_Employed = false;
+
 }
 
 Person::Person(string name) {
