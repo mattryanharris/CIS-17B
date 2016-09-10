@@ -8,6 +8,8 @@ class Position;
 class Person {
 public:
     Person(std::string name);
+    std::string toString();
+    void setPosition(Employer newC, Position newP);
     ~Person();
 private:
     std::string m_Name;

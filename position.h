@@ -3,7 +3,6 @@
 
 #include <string>
 
-
 class Position {
 public:
     Position(std::string name, std::string description);
