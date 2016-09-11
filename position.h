@@ -8,6 +8,7 @@ public:
     Position(std::string name, std::string description);
     ~Position();
     std::string toString();
+    std::string getName();
 
 private:
     std::string m_Name;

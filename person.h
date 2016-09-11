@@ -7,9 +7,12 @@ class Position;
 
 class Person {
 public:
+    Person();
     Person(std::string name);
     std::string toString();
-    void setPosition(Employer newC, Position newP);
+    void setPosition(Employer * newC, Position * newP);
+    Position getPosition();
+    Employer getEmployer();
     ~Person();
 private:
     std::string m_Name;
