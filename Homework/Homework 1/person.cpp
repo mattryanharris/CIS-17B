@@ -22,13 +22,6 @@ void Person::setPosition(Employer * newC, Position * newP) {
     m_Employed = m_Employer != NULL && m_Position !=NULL;
 }
 
-Position Person::getPosition() {
-    if (m_Position == NULL)
-        return Position("Water Boy", "Keeps off-brand Picard's head sweat free and polished");
-    else
-        return *(this-> m_Position);
-}
-
 Employer Person::getEmployer() {
     if (m_Employer == NULL)
         return Employer("Space Force", "Fights the Klingoffs and the evil USPTO");
@@ -36,5 +29,12 @@ Employer Person::getEmployer() {
         return *(this-> m_Employer);
 }
 
+
+Position Person::getPosition() {
+    if (m_Position == NULL)
+        return Position("Water Boy", "Keeps off-brand Picard's head sweat free and polished");
+    else
+        return *(this-> m_Position);
+}
 
 Person::~Person() {}

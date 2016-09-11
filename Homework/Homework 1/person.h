@@ -21,5 +21,4 @@ private:
     Employer * m_Employer;
 };
 
-
 #endif // PERSON_H

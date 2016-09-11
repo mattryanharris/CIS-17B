@@ -14,4 +14,3 @@ std::string Position::toString() {
 std::string Position::getName() {
     return m_Name;
 }
-
