@@ -2,9 +2,7 @@
 #include "position.h"
 #include "employer.h"
 
-Person::Person() {
-
-}
+Person::Person() {}
 
 Person::Person(std::string name) {
     m_Name = name;
