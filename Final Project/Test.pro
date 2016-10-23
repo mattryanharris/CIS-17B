@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2016-10-20T20:47:03
+# Project created by QtCreator 2016-10-20T21:42:49
 #
 #-------------------------------------------------
 
@@ -8,13 +8,17 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = FinalProject
+TARGET = Test
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        battleship.cpp
+        widget.cpp \
+    ship.cpp \
+    ship_manager.cpp
 
-HEADERS  += battleship.h
+HEADERS  += widget.h \
+    ship.h \
+    ship_manager.h
 
-FORMS    += battleship.ui
+FORMS    += widget.ui

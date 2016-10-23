@@ -1,6 +1,6 @@
 <ui version="4.0">
- <class>Battleship</class>
- <widget class="QWidget" name="Battleship" >
+ <class>ATM</class>
+ <widget class="QWidget" name="ATM" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Battleship</string>
+   <string>ATM</string>
   </property>
  </widget>
  <layoutDefault spacing="6" margin="11" />
