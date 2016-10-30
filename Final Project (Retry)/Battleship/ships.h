@@ -7,7 +7,8 @@
 class Ships
 {
 public:
-    Ships();
+    Ships(int size);
+
 
 private:
     int carrier = 5;
