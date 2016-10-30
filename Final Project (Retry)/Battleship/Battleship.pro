@@ -13,8 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        battleship.cpp
+        battleship.cpp \
+    grid.cpp \
+    ships.cpp \
+    shipmanagement.cpp
 
-HEADERS  += battleship.h
+HEADERS  += battleship.h \
+    grid.h \
+    ships.h \
+    shipmanagement.h
 
 FORMS    += battleship.ui
