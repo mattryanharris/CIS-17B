@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
 
@@ -23,6 +24,7 @@ class Ui_battleship
 {
 public:
     QTableWidget *playerGrid;
+    QLabel *label;
 
     void setupUi(QWidget *battleship)
     {
@@ -100,6 +102,12 @@ public:
         playerGrid->setCornerButtonEnabled(false);
         playerGrid->horizontalHeader()->setDefaultSectionSize(47);
         playerGrid->verticalHeader()->setDefaultSectionSize(32);
+        label = new QLabel(battleship);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(30, 15, 151, 31));
+        QFont font;
+        font.setPointSize(21);
+        label->setFont(font);
 
         retranslateUi(battleship);
 
@@ -149,6 +157,7 @@ public:
         ___qtablewidgetitem18->setText(QApplication::translate("battleship", "9", 0));
         QTableWidgetItem *___qtablewidgetitem19 = playerGrid->verticalHeaderItem(9);
         ___qtablewidgetitem19->setText(QApplication::translate("battleship", "10", 0));
+        label->setText(QApplication::translate("battleship", "Your Grid", 0));
     } // retranslateUi
 
 };

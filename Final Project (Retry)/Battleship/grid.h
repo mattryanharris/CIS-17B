@@ -8,6 +8,9 @@ class Grid
 {
 public:
     Grid();
+
+private:
+
 };
 
 #endif // GRID_H

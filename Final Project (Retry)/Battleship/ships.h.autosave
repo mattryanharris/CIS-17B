@@ -1,13 +1,14 @@
-#ifndef SHIPMANAGEMENT_H
-#define SHIPMANAGEMENT_H
+#ifndef SHIPS_H
+#define SHIPS_H
 
 #include <QObject>
 #include <QWidget>
 
-class ShipManagement
+class Ships
 {
 public:
-    ShipManagement();
+    Ships(int size);
+    
 
 private:
     int carrier = 5;
@@ -16,4 +17,4 @@ private:
     int destroyer = 2;
 };
 
-#endif // SHIPMANAGEMENT_H
+#endif // SHIPS_H
