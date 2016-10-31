@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
 
@@ -24,13 +25,16 @@ class Ui_battleship
 {
 public:
     QTableWidget *playerGrid;
+    QLabel *yourGrid;
     QLabel *label;
+    QPushButton *verticalSwitch;
+    QPushButton *horizontalSwitch;
 
     void setupUi(QWidget *battleship)
     {
         if (battleship->objectName().isEmpty())
             battleship->setObjectName(QStringLiteral("battleship"));
-        battleship->resize(1162, 448);
+        battleship->resize(1162, 538);
         battleship->setMaximumSize(QSize(16777215, 16777215));
         playerGrid = new QTableWidget(battleship);
         if (playerGrid->columnCount() < 10)
@@ -77,6 +81,10 @@ public:
         playerGrid->setVerticalHeaderItem(8, __qtablewidgetitem18);
         QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
         playerGrid->setVerticalHeaderItem(9, __qtablewidgetitem19);
+        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
+        playerGrid->setItem(2, 9, __qtablewidgetitem20);
+        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
+        playerGrid->setItem(6, 9, __qtablewidgetitem21);
         playerGrid->setObjectName(QStringLiteral("playerGrid"));
         playerGrid->setGeometry(QRect(30, 60, 494, 343));
         QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
@@ -85,6 +93,19 @@ public:
         sizePolicy.setHeightForWidth(playerGrid->sizePolicy().hasHeightForWidth());
         playerGrid->setSizePolicy(sizePolicy);
         playerGrid->setMaximumSize(QSize(16777215, 16777215));
+        QPalette palette;
+        QBrush brush(QColor(178, 215, 255, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush);
+        QBrush brush1(QColor(212, 212, 212, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush1);
+        QBrush brush2(QColor(210, 39, 56, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush2);
+        playerGrid->setPalette(palette);
+        playerGrid->setMouseTracking(true);
+        playerGrid->setAutoFillBackground(false);
         playerGrid->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         playerGrid->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         playerGrid->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
@@ -102,12 +123,21 @@ public:
         playerGrid->setCornerButtonEnabled(false);
         playerGrid->horizontalHeader()->setDefaultSectionSize(47);
         playerGrid->verticalHeader()->setDefaultSectionSize(32);
-        label = new QLabel(battleship);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 15, 151, 31));
+        yourGrid = new QLabel(battleship);
+        yourGrid->setObjectName(QStringLiteral("yourGrid"));
+        yourGrid->setGeometry(QRect(30, 15, 151, 31));
         QFont font;
         font.setPointSize(21);
-        label->setFont(font);
+        yourGrid->setFont(font);
+        label = new QLabel(battleship);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(510, 400, 141, 31));
+        verticalSwitch = new QPushButton(battleship);
+        verticalSwitch->setObjectName(QStringLiteral("verticalSwitch"));
+        verticalSwitch->setGeometry(QRect(30, 410, 113, 32));
+        horizontalSwitch = new QPushButton(battleship);
+        horizontalSwitch->setObjectName(QStringLiteral("horizontalSwitch"));
+        horizontalSwitch->setGeometry(QRect(140, 410, 113, 32));
 
         retranslateUi(battleship);
 
@@ -157,7 +187,15 @@ public:
         ___qtablewidgetitem18->setText(QApplication::translate("battleship", "9", 0));
         QTableWidgetItem *___qtablewidgetitem19 = playerGrid->verticalHeaderItem(9);
         ___qtablewidgetitem19->setText(QApplication::translate("battleship", "10", 0));
-        label->setText(QApplication::translate("battleship", "Your Grid", 0));
+
+        const bool __sortingEnabled = playerGrid->isSortingEnabled();
+        playerGrid->setSortingEnabled(false);
+        playerGrid->setSortingEnabled(__sortingEnabled);
+
+        yourGrid->setText(QApplication::translate("battleship", "Your Grid", 0));
+        label->setText(QApplication::translate("battleship", "TextLabel", 0));
+        verticalSwitch->setText(QApplication::translate("battleship", "Vertical", 0));
+        horizontalSwitch->setText(QApplication::translate("battleship", "Horizontal", 0));
     } // retranslateUi
 
 };
