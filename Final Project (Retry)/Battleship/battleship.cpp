@@ -65,6 +65,7 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
             ui->label->setText("NA");
         }
 
+        // if selection is row 9
         else {
             ui->playerGrid->setItem(row - 1, column, new QTableWidgetItem);
             ui->playerGrid->item(row - 1,column)->setBackground(QColor::fromRgb(255,80,91));
@@ -72,17 +73,19 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
         }
     }
 
+    // if selection is in a non-problem area
     else {
+        // if selection is horizontal
         if(axisSelection == 0) {
-            if(column == 0) {
-                ui->playerGrid->setItem(row, column + 1, new QTableWidgetItem);
-                ui->playerGrid->item(row,column + 1)->setBackground(QColor::fromRgb(176,215,255));
 
-                ui->playerGrid->setItem(row,column - 1, new QTableWidgetItem);
-                ui->playerGrid->item(row,column - 1)->setBackground(QColor::fromRgb(176,215,255));
-            }
+            ui->playerGrid->setItem(row, column + 1, new QTableWidgetItem);
+            ui->playerGrid->item(row,column + 1)->setBackground(QColor::fromRgb(176,215,255));
+
+            ui->playerGrid->setItem(row,column - 1, new QTableWidgetItem);
+            ui->playerGrid->item(row,column - 1)->setBackground(QColor::fromRgb(176,215,255));
         }
 
+        // if selection is vertical
         else {
             ui->playerGrid->setItem(row + 1, column, new QTableWidgetItem);
             ui->playerGrid->item(row + 1,column)->setBackground(QColor::fromRgb(176,215,255));
