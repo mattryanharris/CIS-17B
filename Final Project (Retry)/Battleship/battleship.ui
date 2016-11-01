@@ -78,7 +78,7 @@
     </palette>
    </property>
    <property name="mouseTracking">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
    <property name="autoFillBackground">
     <bool>false</bool>
@@ -99,16 +99,25 @@
     <set>QAbstractItemView::NoEditTriggers</set>
    </property>
    <property name="dragEnabled">
-    <bool>true</bool>
+    <bool>false</bool>
+   </property>
+   <property name="dragDropOverwriteMode">
+    <bool>false</bool>
    </property>
    <property name="dragDropMode">
-    <enum>QAbstractItemView::DropOnly</enum>
+    <enum>QAbstractItemView::NoDragDrop</enum>
    </property>
    <property name="alternatingRowColors">
     <bool>false</bool>
    </property>
    <property name="selectionMode">
     <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>12</width>
+     <height>6</height>
+    </size>
    </property>
    <property name="textElideMode">
     <enum>Qt::ElideMiddle</enum>
