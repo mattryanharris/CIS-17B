@@ -46,7 +46,7 @@ public:
         sizePolicy.setVerticalStretch(2);
         sizePolicy.setHeightForWidth(battleship->sizePolicy().hasHeightForWidth());
         battleship->setSizePolicy(sizePolicy);
-        battleship->setMaximumSize(QSize(1162, 16777215));
+        battleship->setMaximumSize(QSize(16777215, 16777215));
         battleship->setLayoutDirection(Qt::LeftToRight);
         playerGrid = new QTableWidget(battleship);
         if (playerGrid->columnCount() < 10)
@@ -178,6 +178,11 @@ public:
         frame = new QFrame(battleship);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setGeometry(QRect(-30, 530, 1281, 80));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
+        frame->setSizePolicy(sizePolicy2);
         frame->setAutoFillBackground(false);
         frame->setStyleSheet(QLatin1String("background-color:white;\n"
 "border:none;\n"

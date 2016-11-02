@@ -35,7 +35,8 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
         // if selection is column A
         if(column == 0) {
             ui->playerGrid->setItem(row, column, new QTableWidgetItem);
-            ui->playerGrid->item(row,column)->setBackground(QColor::fromRgb(255,80,91));
+            ui->playerGrid->item(row, column)->setData( Qt::BackgroundRole, QColor::fromRgb(255,80,91)) ;
+            ui->playerGrid->item(row, column)->setSelected(false);
 
             ui->playerGrid->setItem(row, column + 1, new QTableWidgetItem);
             ui->playerGrid->item(row,column + 1)->setBackground(QColor::fromRgb(255,80,91));
@@ -43,8 +44,13 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
 
         // if selection is column J
         else {
+            ui->playerGrid->setItem(row, column, new QTableWidgetItem);
+            ui->playerGrid->item(row,column)->setBackground(QColor::fromRgb(255,80,91));
+            ui->playerGrid->item(row, column)->setSelected(false);
+
             ui->playerGrid->setItem(row, column - 1, new QTableWidgetItem);
             ui->playerGrid->item(row,column - 1)->setBackground(QColor::fromRgb(255,80,91));
+            ui->playerGrid->item(row, column)->setSelected(false);
         }
     }
 
@@ -56,6 +62,7 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
         if(row == 0) {
             ui->playerGrid->setItem(row, column, new QTableWidgetItem);
             ui->playerGrid->item(row,column)->setBackground(QColor::fromRgb(255,80,91));
+            ui->playerGrid->item(row, column)->setSelected(false);
 
             ui->playerGrid->setItem(row + 1, column, new QTableWidgetItem);
             ui->playerGrid->item(row + 1,column)->setBackground(QColor::fromRgb(255,80,91));
@@ -63,6 +70,10 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
 
         // if selection is row 9
         else {
+            ui->playerGrid->setItem(row, column, new QTableWidgetItem);
+            ui->playerGrid->item(row,column)->setBackground(QColor::fromRgb(255,80,91));
+            ui->playerGrid->item(row, column)->setSelected(false);
+
             ui->playerGrid->setItem(row - 1, column, new QTableWidgetItem);
             ui->playerGrid->item(row - 1,column)->setBackground(QColor::fromRgb(255,80,91));
         }
