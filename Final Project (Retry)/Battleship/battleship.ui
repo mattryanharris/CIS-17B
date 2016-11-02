@@ -272,7 +272,7 @@
     <string>Your Grid</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="verticalSwitch">
+  <widget class="QPushButton" name="horizontalSwitch">
    <property name="geometry">
     <rect>
      <x>24</x>
@@ -281,10 +281,17 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;
+</string>
+   </property>
    <property name="text">
     <string>Horizontal</string>
    </property>
    <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
     <bool>true</bool>
    </property>
    <property name="autoDefault">
@@ -297,7 +304,7 @@
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="horizontalSwitch">
+  <widget class="QPushButton" name="verticalSwitch">
    <property name="geometry">
     <rect>
      <x>133</x>

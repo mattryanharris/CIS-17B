@@ -96,10 +96,19 @@ void battleship::on_verticalSwitch_clicked()
 {
     axisSelection = 1;
     ui->horizontalSwitch->setChecked(false);
+    ui->verticalSwitch->setStyleSheet("QPushButton {color: white;}");
+    ui->horizontalSwitch->setStyleSheet("QPushButton {color: black;}");
+    ui->verticalSwitch->setEnabled(false);
+    ui->horizontalSwitch->setEnabled(true);
 }
 
 void battleship::on_horizontalSwitch_clicked()
 {
     axisSelection = 0;
     ui->verticalSwitch->setChecked(false);
+    ui->verticalSwitch->setStyleSheet("QPushButton {color: black;}");
+    ui->horizontalSwitch->setStyleSheet("QPushButton {color: white;}");
+    ui->horizontalSwitch->setEnabled(false);
+    ui->verticalSwitch->setEnabled(true);
+
 }

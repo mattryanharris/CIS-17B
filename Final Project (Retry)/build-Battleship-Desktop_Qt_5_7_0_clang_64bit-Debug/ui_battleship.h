@@ -27,8 +27,8 @@ class Ui_battleship
 public:
     QTableWidget *playerGrid;
     QLabel *yourGrid;
-    QPushButton *verticalSwitch;
     QPushButton *horizontalSwitch;
+    QPushButton *verticalSwitch;
     QLabel *placeTitle;
     QFrame *lineSection;
     QLabel *placeDescription;
@@ -136,16 +136,19 @@ public:
         QFont font;
         font.setPointSize(21);
         yourGrid->setFont(font);
-        verticalSwitch = new QPushButton(battleship);
-        verticalSwitch->setObjectName(QStringLiteral("verticalSwitch"));
-        verticalSwitch->setGeometry(QRect(24, 410, 113, 32));
-        verticalSwitch->setCheckable(true);
-        verticalSwitch->setAutoDefault(false);
-        verticalSwitch->setFlat(false);
         horizontalSwitch = new QPushButton(battleship);
         horizontalSwitch->setObjectName(QStringLiteral("horizontalSwitch"));
-        horizontalSwitch->setGeometry(QRect(133, 410, 109, 32));
+        horizontalSwitch->setGeometry(QRect(24, 410, 113, 32));
+        horizontalSwitch->setStyleSheet(QLatin1String("color:white;\n"
+""));
         horizontalSwitch->setCheckable(true);
+        horizontalSwitch->setChecked(true);
+        horizontalSwitch->setAutoDefault(false);
+        horizontalSwitch->setFlat(false);
+        verticalSwitch = new QPushButton(battleship);
+        verticalSwitch->setObjectName(QStringLiteral("verticalSwitch"));
+        verticalSwitch->setGeometry(QRect(133, 410, 109, 32));
+        verticalSwitch->setCheckable(true);
         placeTitle = new QLabel(battleship);
         placeTitle->setObjectName(QStringLiteral("placeTitle"));
         placeTitle->setGeometry(QRect(30, 470, 171, 31));
@@ -178,7 +181,7 @@ public:
 
         retranslateUi(battleship);
 
-        verticalSwitch->setDefault(false);
+        horizontalSwitch->setDefault(false);
 
 
         QMetaObject::connectSlotsByName(battleship);
@@ -233,8 +236,8 @@ public:
         playerGrid->setSortingEnabled(__sortingEnabled);
 
         yourGrid->setText(QApplication::translate("battleship", "Your Grid", 0));
-        verticalSwitch->setText(QApplication::translate("battleship", "Horizontal", 0));
-        horizontalSwitch->setText(QApplication::translate("battleship", "Vertical", 0));
+        horizontalSwitch->setText(QApplication::translate("battleship", "Horizontal", 0));
+        verticalSwitch->setText(QApplication::translate("battleship", "Vertical", 0));
         placeTitle->setText(QApplication::translate("battleship", "Place Your Ships", 0));
         placeDescription->setText(QApplication::translate("battleship", "Set your ships using the grid system", 0));
         setPosition->setText(QApplication::translate("battleship", "Set Position", 0));
