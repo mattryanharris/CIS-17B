@@ -139,9 +139,13 @@ public:
         verticalSwitch = new QPushButton(battleship);
         verticalSwitch->setObjectName(QStringLiteral("verticalSwitch"));
         verticalSwitch->setGeometry(QRect(24, 410, 113, 32));
+        verticalSwitch->setCheckable(true);
+        verticalSwitch->setAutoDefault(false);
+        verticalSwitch->setFlat(false);
         horizontalSwitch = new QPushButton(battleship);
         horizontalSwitch->setObjectName(QStringLiteral("horizontalSwitch"));
         horizontalSwitch->setGeometry(QRect(133, 410, 109, 32));
+        horizontalSwitch->setCheckable(true);
         placeTitle = new QLabel(battleship);
         placeTitle->setObjectName(QStringLiteral("placeTitle"));
         placeTitle->setGeometry(QRect(30, 470, 171, 31));
@@ -173,6 +177,9 @@ public:
         frame->setFrameShadow(QFrame::Raised);
 
         retranslateUi(battleship);
+
+        verticalSwitch->setDefault(false);
+
 
         QMetaObject::connectSlotsByName(battleship);
     } // setupUi

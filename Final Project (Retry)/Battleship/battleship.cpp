@@ -95,9 +95,11 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
 void battleship::on_verticalSwitch_clicked()
 {
     axisSelection = 1;
+    ui->horizontalSwitch->setChecked(false);
 }
 
 void battleship::on_horizontalSwitch_clicked()
 {
     axisSelection = 0;
+    ui->verticalSwitch->setChecked(false);
 }
