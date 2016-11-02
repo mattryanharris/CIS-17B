@@ -27,7 +27,6 @@ class Ui_battleship
 public:
     QTableWidget *playerGrid;
     QLabel *yourGrid;
-    QLabel *label;
     QPushButton *verticalSwitch;
     QPushButton *horizontalSwitch;
     QLabel *placeTitle;
@@ -137,19 +136,20 @@ public:
         QFont font;
         font.setPointSize(21);
         yourGrid->setFont(font);
-        label = new QLabel(battleship);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(260, 400, 141, 31));
         verticalSwitch = new QPushButton(battleship);
         verticalSwitch->setObjectName(QStringLiteral("verticalSwitch"));
         verticalSwitch->setGeometry(QRect(24, 410, 113, 32));
         horizontalSwitch = new QPushButton(battleship);
         horizontalSwitch->setObjectName(QStringLiteral("horizontalSwitch"));
-        horizontalSwitch->setGeometry(QRect(133, 410, 113, 32));
+        horizontalSwitch->setGeometry(QRect(133, 410, 109, 32));
         placeTitle = new QLabel(battleship);
         placeTitle->setObjectName(QStringLiteral("placeTitle"));
         placeTitle->setGeometry(QRect(30, 470, 171, 31));
-        placeTitle->setFont(font);
+        QFont font1;
+        font1.setPointSize(21);
+        font1.setBold(false);
+        font1.setWeight(50);
+        placeTitle->setFont(font1);
         lineSection = new QFrame(battleship);
         lineSection->setObjectName(QStringLiteral("lineSection"));
         lineSection->setGeometry(QRect(0, 450, 1191, 16));
@@ -226,9 +226,8 @@ public:
         playerGrid->setSortingEnabled(__sortingEnabled);
 
         yourGrid->setText(QApplication::translate("battleship", "Your Grid", 0));
-        label->setText(QString());
-        verticalSwitch->setText(QApplication::translate("battleship", "Vertical", 0));
-        horizontalSwitch->setText(QApplication::translate("battleship", "Horizontal", 0));
+        verticalSwitch->setText(QApplication::translate("battleship", "Horizontal", 0));
+        horizontalSwitch->setText(QApplication::translate("battleship", "Vertical", 0));
         placeTitle->setText(QApplication::translate("battleship", "Place Your Ships", 0));
         placeDescription->setText(QApplication::translate("battleship", "Set your ships using the grid system", 0));
         setPosition->setText(QApplication::translate("battleship", "Set Position", 0));

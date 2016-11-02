@@ -40,14 +40,12 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
 
             ui->playerGrid->setItem(row, column + 1, new QTableWidgetItem);
             ui->playerGrid->item(row,column + 1)->setBackground(QColor::fromRgb(255,80,91));
-            ui->label->setText("NA");
         }
 
         // if selection is column J
         else {
             ui->playerGrid->setItem(row, column - 1, new QTableWidgetItem);
             ui->playerGrid->item(row,column - 1)->setBackground(QColor::fromRgb(255,80,91));
-            ui->label->setText("NA");
         }
     }
 
@@ -62,14 +60,12 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
 
             ui->playerGrid->setItem(row + 1, column, new QTableWidgetItem);
             ui->playerGrid->item(row + 1,column)->setBackground(QColor::fromRgb(255,80,91));
-            ui->label->setText("NA");
         }
 
         // if selection is row 9
         else {
             ui->playerGrid->setItem(row - 1, column, new QTableWidgetItem);
             ui->playerGrid->item(row - 1,column)->setBackground(QColor::fromRgb(255,80,91));
-            ui->label->setText("NA");
         }
     }
 
@@ -94,17 +90,6 @@ void battleship::on_playerGrid_cellClicked(int row, int column)
             ui->playerGrid->item(row - 1,column)->setBackground(QColor::fromRgb(176,215,255));
         }
     }
-}
-
-
-void battleship::on_playerGrid_cellChanged(int row, int column)
-{
-    QString info;
-    QString row1 = QString::number(row);
-    QString column1 = QString::number(column);
-    info.append(row1);
-    info.append(column1);
-    ui->label->setText(info);
 }
 
 void battleship::on_verticalSwitch_clicked()
