@@ -24,3 +24,6 @@ HEADERS  += battleship.h \
     shipmanagement.h
 
 FORMS    += battleship.ui
+
+RESOURCES += \
+    ships.qrc

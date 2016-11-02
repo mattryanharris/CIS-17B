@@ -1,10 +1,6 @@
 #include "battleship.h"
 #include "ui_battleship.h"
 #include "grid.h"
-#include <Qt>
-#include <QColor>
-#include <QString>
-
 
 battleship::battleship(QWidget *parent) :
     QWidget(parent),
@@ -21,6 +17,8 @@ battleship::~battleship()
 
 void battleship::on_playerGrid_cellClicked(int row, int column)
 {
+    columnX = column;
+    rowY = row;
 
     // clear the grid every click
     for(int i = 0; i < 10; i++) {
@@ -120,4 +118,9 @@ void battleship::on_horizontalSwitch_clicked()
     ui->horizontalSwitch->setStyleSheet("QPushButton {color: white;}");
     ui->horizontalSwitch->setEnabled(false);
     ui->verticalSwitch->setEnabled(true);
+}
+
+void battleship::on_setPosition_clicked()
+{
+
 }

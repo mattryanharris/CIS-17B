@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Battleship1.0.0
-DISTDIR = /Users/Matthew/Documents/CIS-17B/Final\ Project\ (Retry)/build-Battleship-Desktop_Qt_5_7_0_clang_64bit-Debug/.tmp/Battleship1.0.0
+DISTDIR = /Users/Matthew/Documents/Repository/CIS-17B/Final\ Project\ (Retry)/build-Battleship-Desktop_Qt_5_7_0_clang_64bit-Debug/.tmp/Battleship1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -headerpad_max_install_names -stdlib=libc++ -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -mmacosx-version-min=10.8 -Wl,-rpath,/Applications/Qt/5.7/clang_64/lib
 LIBS          = $(SUBLIBS) -F/Applications/Qt/5.7/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
@@ -52,12 +52,14 @@ SOURCES       = ../Battleship/main.cpp \
 		../Battleship/battleship.cpp \
 		../Battleship/grid.cpp \
 		../Battleship/ships.cpp \
-		../Battleship/shipmanagement.cpp moc_battleship.cpp
+		../Battleship/shipmanagement.cpp qrc_ships.cpp \
+		moc_battleship.cpp
 OBJECTS       = main.o \
 		battleship.o \
 		grid.o \
 		ships.o \
 		shipmanagement.o \
+		qrc_ships.o \
 		moc_battleship.o
 DIST          = /Applications/Qt/5.7/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/Qt/5.7/clang_64/mkspecs/qdevice.pri \
@@ -390,6 +392,7 @@ Makefile: ../Battleship/Battleship.pro /Applications/Qt/5.7/clang_64/mkspecs/mac
 		/Applications/Qt/5.7/clang_64/mkspecs/features/yacc.prf \
 		/Applications/Qt/5.7/clang_64/mkspecs/features/lex.prf \
 		../Battleship/Battleship.pro \
+		../Battleship/ships.qrc \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/QtWidgets.prl \
 		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/QtGui.prl \
 		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/QtCore.prl
@@ -550,6 +553,7 @@ Makefile: ../Battleship/Battleship.pro /Applications/Qt/5.7/clang_64/mkspecs/mac
 /Applications/Qt/5.7/clang_64/mkspecs/features/yacc.prf:
 /Applications/Qt/5.7/clang_64/mkspecs/features/lex.prf:
 ../Battleship/Battleship.pro:
+../Battleship/ships.qrc:
 /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/QtWidgets.prl:
 /Applications/Qt/5.7/clang_64/lib/QtGui.framework/QtGui.prl:
 /Applications/Qt/5.7/clang_64/lib/QtCore.framework/QtCore.prl:
@@ -569,7 +573,7 @@ Battleship.app/Contents/Resources/empty.lproj:
 Battleship.app/Contents/Info.plist: 
 	@test -d Battleship.app/Contents || mkdir -p Battleship.app/Contents
 	@$(DEL_FILE) Battleship.app/Contents/Info.plist
-	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@BUNDLEIDENTIFIER@,classstatus.Battleship,g" -e "s,@ICON@,,g" -e "s,@EXECUTABLE@,Battleship,g" -e "s,@LIBRARY@,Battleship,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.7/clang_64/mkspecs/macx-clang/Info.plist.app >Battleship.app/Contents/Info.plist
+	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,@BUNDLEIDENTIFIER@,biofare.Battleship,g" -e "s,@ICON@,,g" -e "s,@EXECUTABLE@,Battleship,g" -e "s,@LIBRARY@,Battleship,g" -e "s,@TYPEINFO@,????,g" /Applications/Qt/5.7/clang_64/mkspecs/macx-clang/Info.plist.app >Battleship.app/Contents/Info.plist
 
 all: Makefile \
 		Battleship.app/Contents/PkgInfo \
@@ -582,6 +586,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Battleship/ships.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../Battleship/battleship.h ../Battleship/grid.h ../Battleship/ships.h ../Battleship/shipmanagement.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Battleship/main.cpp ../Battleship/battleship.cpp ../Battleship/grid.cpp ../Battleship/ships.cpp ../Battleship/shipmanagement.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Battleship/battleship.ui $(DISTDIR)/
@@ -608,16 +613,24 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_ships.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_ships.cpp
+qrc_ships.cpp: ../Battleship/ships.qrc \
+		/Applications/Qt/5.7/clang_64/bin/rcc
+	/Applications/Qt/5.7/clang_64/bin/rcc -name ships ../Battleship/ships.qrc -o qrc_ships.cpp
+
 compiler_moc_header_make_all: moc_battleship.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_battleship.cpp
 moc_battleship.cpp: /Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../Battleship/grid.h \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		../Battleship/battleship.h \
 		/Applications/Qt/5.7/clang_64/bin/moc
-	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I'/Users/Matthew/Documents/CIS-17B/Final Project (Retry)/Battleship' -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -I'/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../Battleship/battleship.h -o moc_battleship.cpp
+	/Applications/Qt/5.7/clang_64/bin/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -I/Applications/Qt/5.7/clang_64/mkspecs/macx-clang -I'/Users/Matthew/Documents/Repository/CIS-17B/Final Project (Retry)/Battleship' -I/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers -I/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/8.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include -I'/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks (framework directory)' -F/Applications/Qt/5.7/clang_64/lib ../Battleship/battleship.h -o moc_battleship.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -636,13 +649,16 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
 main.o: ../Battleship/main.cpp ../Battleship/battleship.h \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../Battleship/grid.h \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Battleship/main.cpp
@@ -650,6 +666,9 @@ main.o: ../Battleship/main.cpp ../Battleship/battleship.h \
 battleship.o: ../Battleship/battleship.cpp ../Battleship/battleship.h \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../Battleship/grid.h \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/QObject \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/qobject.h \
 		ui_battleship.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o battleship.o ../Battleship/battleship.cpp
 
@@ -673,6 +692,9 @@ shipmanagement.o: ../Battleship/shipmanagement.cpp ../Battleship/shipmanagement.
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shipmanagement.o ../Battleship/shipmanagement.cpp
+
+qrc_ships.o: qrc_ships.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_ships.o qrc_ships.cpp
 
 moc_battleship.o: moc_battleship.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_battleship.o moc_battleship.cpp

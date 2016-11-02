@@ -23,9 +23,13 @@ private slots:
 
     void on_horizontalSwitch_clicked();
 
+    void on_setPosition_clicked();
+
 private:
     Ui::battleship *ui;
     int axisSelection = 0;
+    int columnX;
+    int rowY;
 };
 
 #endif // BATTLESHIP_H

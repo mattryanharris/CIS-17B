@@ -34,13 +34,14 @@ public:
     QLabel *placeDescription;
     QPushButton *setPosition;
     QFrame *frame;
+    QLabel *label;
 
     void setupUi(QWidget *battleship)
     {
         if (battleship->objectName().isEmpty())
             battleship->setObjectName(QStringLiteral("battleship"));
         battleship->setWindowModality(Qt::ApplicationModal);
-        battleship->resize(1162, 599);
+        battleship->resize(1162, 607);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(2);
@@ -178,11 +179,6 @@ public:
         frame = new QFrame(battleship);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setGeometry(QRect(-30, 530, 1281, 80));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
-        frame->setSizePolicy(sizePolicy2);
         frame->setAutoFillBackground(false);
         frame->setStyleSheet(QLatin1String("background-color:white;\n"
 "border:none;\n"
@@ -190,6 +186,11 @@ public:
 ""));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
+        label = new QLabel(frame);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(60, 10, 171, 51));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/Images/Ships/carrier.png")));
+        label->setScaledContents(true);
 
         retranslateUi(battleship);
 
@@ -253,6 +254,7 @@ public:
         placeTitle->setText(QApplication::translate("battleship", "Place Your Ships", 0));
         placeDescription->setText(QApplication::translate("battleship", "Set your ships using the grid system", 0));
         setPosition->setText(QApplication::translate("battleship", "Set Position", 0));
+        label->setText(QString());
     } // retranslateUi
 
 };
