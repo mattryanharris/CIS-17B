@@ -19,7 +19,6 @@ battleship::~battleship()
     delete ui;
 }
 
-
 void battleship::on_playerGrid_cellClicked(int row, int column)
 {
 
@@ -110,5 +109,4 @@ void battleship::on_horizontalSwitch_clicked()
     ui->horizontalSwitch->setStyleSheet("QPushButton {color: white;}");
     ui->horizontalSwitch->setEnabled(false);
     ui->verticalSwitch->setEnabled(true);
-
 }

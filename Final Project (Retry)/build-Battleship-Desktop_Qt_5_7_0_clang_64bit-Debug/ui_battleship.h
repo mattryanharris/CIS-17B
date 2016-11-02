@@ -39,8 +39,15 @@ public:
     {
         if (battleship->objectName().isEmpty())
             battleship->setObjectName(QStringLiteral("battleship"));
+        battleship->setWindowModality(Qt::ApplicationModal);
         battleship->resize(1162, 599);
-        battleship->setMaximumSize(QSize(16777215, 16777215));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(2);
+        sizePolicy.setHeightForWidth(battleship->sizePolicy().hasHeightForWidth());
+        battleship->setSizePolicy(sizePolicy);
+        battleship->setMaximumSize(QSize(1162, 16777215));
+        battleship->setLayoutDirection(Qt::LeftToRight);
         playerGrid = new QTableWidget(battleship);
         if (playerGrid->columnCount() < 10)
             playerGrid->setColumnCount(10);
@@ -92,11 +99,11 @@ public:
         playerGrid->setItem(6, 9, __qtablewidgetitem21);
         playerGrid->setObjectName(QStringLiteral("playerGrid"));
         playerGrid->setGeometry(QRect(30, 60, 504, 343));
-        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(playerGrid->sizePolicy().hasHeightForWidth());
-        playerGrid->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(playerGrid->sizePolicy().hasHeightForWidth());
+        playerGrid->setSizePolicy(sizePolicy1);
         playerGrid->setMaximumSize(QSize(16777215, 16777215));
         QPalette palette;
         QBrush brush(QColor(178, 215, 255, 255));
@@ -189,7 +196,7 @@ public:
 
     void retranslateUi(QWidget *battleship)
     {
-        battleship->setWindowTitle(QApplication::translate("battleship", "battleship", 0));
+        battleship->setWindowTitle(QApplication::translate("battleship", "Battleship", 0));
         QTableWidgetItem *___qtablewidgetitem = playerGrid->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("battleship", "A", 0));
         QTableWidgetItem *___qtablewidgetitem1 = playerGrid->horizontalHeaderItem(1);
