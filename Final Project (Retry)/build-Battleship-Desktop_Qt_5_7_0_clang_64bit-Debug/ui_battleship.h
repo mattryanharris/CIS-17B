@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -29,12 +30,17 @@ public:
     QLabel *label;
     QPushButton *verticalSwitch;
     QPushButton *horizontalSwitch;
+    QLabel *placeTitle;
+    QFrame *lineSection;
+    QLabel *placeDescription;
+    QPushButton *setPosition;
+    QFrame *frame;
 
     void setupUi(QWidget *battleship)
     {
         if (battleship->objectName().isEmpty())
             battleship->setObjectName(QStringLiteral("battleship"));
-        battleship->resize(1162, 538);
+        battleship->resize(1162, 599);
         battleship->setMaximumSize(QSize(16777215, 16777215));
         playerGrid = new QTableWidget(battleship);
         if (playerGrid->columnCount() < 10)
@@ -86,7 +92,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
         playerGrid->setItem(6, 9, __qtablewidgetitem21);
         playerGrid->setObjectName(QStringLiteral("playerGrid"));
-        playerGrid->setGeometry(QRect(30, 60, 494, 343));
+        playerGrid->setGeometry(QRect(30, 60, 504, 343));
         QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -123,7 +129,7 @@ public:
         playerGrid->setSortingEnabled(false);
         playerGrid->setWordWrap(false);
         playerGrid->setCornerButtonEnabled(false);
-        playerGrid->horizontalHeader()->setDefaultSectionSize(47);
+        playerGrid->horizontalHeader()->setDefaultSectionSize(48);
         playerGrid->verticalHeader()->setDefaultSectionSize(32);
         yourGrid = new QLabel(battleship);
         yourGrid->setObjectName(QStringLiteral("yourGrid"));
@@ -133,13 +139,38 @@ public:
         yourGrid->setFont(font);
         label = new QLabel(battleship);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(510, 400, 141, 31));
+        label->setGeometry(QRect(260, 400, 141, 31));
         verticalSwitch = new QPushButton(battleship);
         verticalSwitch->setObjectName(QStringLiteral("verticalSwitch"));
-        verticalSwitch->setGeometry(QRect(30, 410, 113, 32));
+        verticalSwitch->setGeometry(QRect(24, 410, 113, 32));
         horizontalSwitch = new QPushButton(battleship);
         horizontalSwitch->setObjectName(QStringLiteral("horizontalSwitch"));
-        horizontalSwitch->setGeometry(QRect(140, 410, 113, 32));
+        horizontalSwitch->setGeometry(QRect(133, 410, 113, 32));
+        placeTitle = new QLabel(battleship);
+        placeTitle->setObjectName(QStringLiteral("placeTitle"));
+        placeTitle->setGeometry(QRect(30, 470, 171, 31));
+        placeTitle->setFont(font);
+        lineSection = new QFrame(battleship);
+        lineSection->setObjectName(QStringLiteral("lineSection"));
+        lineSection->setGeometry(QRect(0, 450, 1191, 16));
+        lineSection->setFrameShape(QFrame::HLine);
+        lineSection->setFrameShadow(QFrame::Sunken);
+        placeDescription = new QLabel(battleship);
+        placeDescription->setObjectName(QStringLiteral("placeDescription"));
+        placeDescription->setGeometry(QRect(30, 497, 281, 21));
+        setPosition = new QPushButton(battleship);
+        setPosition->setObjectName(QStringLiteral("setPosition"));
+        setPosition->setGeometry(QRect(430, 410, 110, 32));
+        frame = new QFrame(battleship);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setGeometry(QRect(-30, 530, 1281, 80));
+        frame->setAutoFillBackground(false);
+        frame->setStyleSheet(QLatin1String("background-color:white;\n"
+"border:none;\n"
+"border-top:1px solid #C9CBCB;\n"
+""));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
 
         retranslateUi(battleship);
 
@@ -195,9 +226,12 @@ public:
         playerGrid->setSortingEnabled(__sortingEnabled);
 
         yourGrid->setText(QApplication::translate("battleship", "Your Grid", 0));
-        label->setText(QApplication::translate("battleship", "TextLabel", 0));
+        label->setText(QString());
         verticalSwitch->setText(QApplication::translate("battleship", "Vertical", 0));
         horizontalSwitch->setText(QApplication::translate("battleship", "Horizontal", 0));
+        placeTitle->setText(QApplication::translate("battleship", "Place Your Ships", 0));
+        placeDescription->setText(QApplication::translate("battleship", "Set your ships using the grid system", 0));
+        setPosition->setText(QApplication::translate("battleship", "Set Position", 0));
     } // retranslateUi
 
 };
