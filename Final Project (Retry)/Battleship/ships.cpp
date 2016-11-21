@@ -1,6 +1,7 @@
 #include "ships.h"
 
-Ships::Ships(int size)
+Ships::Ships(int x, int y, int size)
 {
     int coordinates[size][2];
+
 }

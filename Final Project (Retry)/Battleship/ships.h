@@ -7,7 +7,7 @@
 class Ships
 {
 public:
-    Ships(int size);
+    Ships(int x, int y, int size);
 
 
 private:
@@ -15,6 +15,7 @@ private:
     int battleship = 4;
     int cruiser = 3;
     int destroyer = 2;
+    int submarine = 1;
 };
 
 #endif // SHIPS_H

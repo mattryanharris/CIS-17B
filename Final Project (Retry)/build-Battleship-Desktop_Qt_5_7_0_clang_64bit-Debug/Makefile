@@ -669,7 +669,13 @@ battleship.o: ../Battleship/battleship.cpp ../Battleship/battleship.h \
 		../Battleship/grid.h \
 		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/QObject \
 		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/qobject.h \
-		ui_battleship.h
+		ui_battleship.h \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/QApplication \
+		/Applications/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/QRect \
+		/Applications/Qt/5.7/clang_64/lib/QtCore.framework/Headers/qrect.h \
+		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/QPixmap \
+		/Applications/Qt/5.7/clang_64/lib/QtGui.framework/Headers/qpixmap.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o battleship.o ../Battleship/battleship.cpp
 
 grid.o: ../Battleship/grid.cpp ../Battleship/grid.h \
