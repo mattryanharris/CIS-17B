@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_battleship_t {
-    QByteArrayData data[10];
-    char stringdata0[134];
+    QByteArrayData data[8];
+    char stringdata0[126];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,17 +34,15 @@ QT_MOC_LITERAL(1, 11, 25), // "on_playerGrid_cellClicked"
 QT_MOC_LITERAL(2, 37, 0), // ""
 QT_MOC_LITERAL(3, 38, 3), // "row"
 QT_MOC_LITERAL(4, 42, 6), // "column"
-QT_MOC_LITERAL(5, 49, 32), // "on_playerGrid_currentCellChanged"
-QT_MOC_LITERAL(6, 82, 10), // "currentRow"
-QT_MOC_LITERAL(7, 93, 13), // "currentColumn"
-QT_MOC_LITERAL(8, 107, 11), // "previousRow"
-QT_MOC_LITERAL(9, 119, 14) // "previousColumn"
+QT_MOC_LITERAL(5, 49, 25), // "on_verticalSwitch_clicked"
+QT_MOC_LITERAL(6, 75, 27), // "on_horizontalSwitch_clicked"
+QT_MOC_LITERAL(7, 103, 22) // "on_setPosition_clicked"
 
     },
     "battleship\0on_playerGrid_cellClicked\0"
-    "\0row\0column\0on_playerGrid_currentCellChanged\0"
-    "currentRow\0currentColumn\0previousRow\0"
-    "previousColumn"
+    "\0row\0column\0on_verticalSwitch_clicked\0"
+    "on_horizontalSwitch_clicked\0"
+    "on_setPosition_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +52,7 @@ static const uint qt_meta_data_battleship[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,12 +60,16 @@ static const uint qt_meta_data_battleship[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   24,    2, 0x08 /* Private */,
-       5,    4,   29,    2, 0x08 /* Private */,
+       1,    2,   34,    2, 0x08 /* Private */,
+       5,    0,   39,    2, 0x08 /* Private */,
+       6,    0,   40,    2, 0x08 /* Private */,
+       7,    0,   41,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    3,    4,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,    6,    7,    8,    9,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -79,7 +81,9 @@ void battleship::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_playerGrid_cellClicked((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 1: _t->on_playerGrid_currentCellChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 1: _t->on_verticalSwitch_clicked(); break;
+        case 2: _t->on_horizontalSwitch_clicked(); break;
+        case 3: _t->on_setPosition_clicked(); break;
         default: ;
         }
     }
@@ -110,13 +114,13 @@ int battleship::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

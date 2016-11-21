@@ -19,12 +19,17 @@ public:
 private slots:
     void on_playerGrid_cellClicked(int row, int column);
 
-    void on_playerGrid_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
+    void on_verticalSwitch_clicked();
 
+    void on_horizontalSwitch_clicked();
 
+    void on_setPosition_clicked();
 
 private:
     Ui::battleship *ui;
+    int axisSelection = 0;
+    int columnX;
+    int rowY;
 };
 
 #endif // BATTLESHIP_H
