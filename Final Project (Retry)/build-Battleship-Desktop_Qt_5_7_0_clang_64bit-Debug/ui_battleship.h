@@ -24,13 +24,13 @@ class Ui_battleship
 {
 public:
     QTableWidget *playerGrid;
-    QLabel *label;
+    QLabel *yourGrid;
 
     void setupUi(QWidget *battleship)
     {
         if (battleship->objectName().isEmpty())
             battleship->setObjectName(QStringLiteral("battleship"));
-        battleship->resize(1162, 448);
+        battleship->resize(1162, 538);
         battleship->setMaximumSize(QSize(16777215, 16777215));
         playerGrid = new QTableWidget(battleship);
         if (playerGrid->columnCount() < 10)
@@ -102,12 +102,12 @@ public:
         playerGrid->setCornerButtonEnabled(false);
         playerGrid->horizontalHeader()->setDefaultSectionSize(47);
         playerGrid->verticalHeader()->setDefaultSectionSize(32);
-        label = new QLabel(battleship);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 15, 151, 31));
+        yourGrid = new QLabel(battleship);
+        yourGrid->setObjectName(QStringLiteral("yourGrid"));
+        yourGrid->setGeometry(QRect(30, 15, 151, 31));
         QFont font;
         font.setPointSize(21);
-        label->setFont(font);
+        yourGrid->setFont(font);
 
         retranslateUi(battleship);
 
@@ -157,7 +157,7 @@ public:
         ___qtablewidgetitem18->setText(QApplication::translate("battleship", "9", 0));
         QTableWidgetItem *___qtablewidgetitem19 = playerGrid->verticalHeaderItem(9);
         ___qtablewidgetitem19->setText(QApplication::translate("battleship", "10", 0));
-        label->setText(QApplication::translate("battleship", "Your Grid", 0));
+        yourGrid->setText(QApplication::translate("battleship", "Your Grid", 0));
     } // retranslateUi
 
 };
